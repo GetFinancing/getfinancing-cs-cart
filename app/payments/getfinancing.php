@@ -102,7 +102,7 @@ else{
     <html>
     <head>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://partner.getfinancing.com/libs/1.0/getfinancing.js"></script>
+    <script src="https://cdn.getfinancing.com/libs/1.0/getfinancing.js"></script>
     </head>
     <body>
     <script type="text/javascript">
