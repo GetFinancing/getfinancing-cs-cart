@@ -59,6 +59,7 @@ else{
           ),
           'version'          => '1.9',
           'email'            => $order_info['email'],
+          'phone'            => $order_info['b_phone'],
           'merchant_loan_id' => $merchant_loan_id
       );
 
