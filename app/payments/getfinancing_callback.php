@@ -28,7 +28,7 @@ switch ($updates->status) {
   			$pp_response["reason_text"] = 'GetFinancing pre-approved call, waiting for payment';
   			$pp_response["transaction_id"] = $order_id;
   		  break;
-    case 'void':
+    case 'rejected':
         $pp_response['order_status'] = 'F';
         $pp_response["reason_text"] = 'Callback received. Payment Failed. Order ID : ' . $order_id;
         $pp_response["transaction_id"] = $order_id;
