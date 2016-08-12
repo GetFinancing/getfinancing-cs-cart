@@ -64,7 +64,9 @@ else{
           'postback_url' => $callback_url,
           'success_url' => $ok_url,
           'failure_url' => $nok_url,
-          'merchant_loan_id' => $merchant_loan_id
+          'merchant_loan_id' => $merchant_loan_id,
+          'software_name' => 'cs-cart',
+          'software_version' => 'cscart 4'
       );
 
       $body_json_data = json_encode($gf_data);
