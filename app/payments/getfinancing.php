@@ -25,6 +25,7 @@ else{
 		else $state_val = $state;
 
 	    $nok_url = fn_url('checkout.checkout');
+      $ok_url = fn_url("payment_notification.notify&payment=getfinancing&order_id=$order_id&transmode=success", AREA, 'current');
 	    $callback_url = Registry::get('config.http_location') . '/app/payments/getfinancing_callback.php';
 
     $products=array();
@@ -60,6 +61,9 @@ else{
           'version'          => '1.9',
           'email'            => $order_info['email'],
           'phone'            => $order_info['b_phone'],
+          'postback_url' => $callback_url,
+          'success_url' => $ok_url,
+          'failure_url' => $nok_url,
           'merchant_loan_id' => $merchant_loan_id
       );
 
@@ -91,8 +95,6 @@ else{
           );
       db_query('UPDATE ?:orders SET ?u WHERE order_id = ?i', $data, $order_id);
 
-
-    $ok_url = fn_url("payment_notification.notify&payment=getfinancing&order_id=$order_id&transmode=success", AREA, 'current');
 		$locale = CART_LANGUAGE;
 		$currency = $order_info['secondary_currency'];
 		$amount = $order_info['total']*100;
