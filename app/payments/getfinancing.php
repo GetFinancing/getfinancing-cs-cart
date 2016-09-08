@@ -47,16 +47,16 @@ else{
           'first_name'       => $order_info['b_firstname'],
           'last_name'        => $order_info['b_lastname'],
           'shipping_address' => array(
+              'street1'  => $order_info['s_address']. " ".$order_info['s_address_2'],
+              'city'    => $order_info['s_city'],
+              'state'   => $order_info['s_state'],
+              'zipcode' => $order_info['s_zipcode']
+          ),
+          'billing_address' => array(
               'street1'  => $order_info['b_address']. " ".$order_info['b_address_2'],
               'city'    => $order_info['b_city'],
               'state'   => $order_info['b_state'],
               'zipcode' => $order_info['b_zipcode']
-          ),
-          'billing_address' => array(
-              'street1'  => $order_info['s_address']. " ".$order_info['s_address_2'],
-              'city'    => $order_info['s_city'],
-              'state'   => $order_info['s_state_descr'],
-              'zipcode' => $order_info['s_zipcode']
           ),
           'version'          => '1.9',
           'email'            => $order_info['email'],
