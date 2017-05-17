@@ -29,6 +29,7 @@ else{
 	    $callback_url = Registry::get('config.http_location') . '/app/payments/getfinancing_callback.php';
 
     $products=array();
+    $cart_items=array();
     if (!empty($order_info['products'])) {
       foreach ($order_info['products'] as $k => $v) {
         $price = fn_format_price($v['price'] - (fn_external_discounts($v) / $v['amount']));
@@ -36,6 +37,13 @@ else{
         $product_name = ($v['extra']['product']). " (".$v['amount'].")";
         $amount = $v['amount'];
         $products[]=$product_name;
+        $cart_items[]=array(
+                            'sku' => $v['product'],
+                            'display_name' => $v['product'],
+                            'unit_price' => number_format($v['price'], 2),
+                            'quantity' => $v['amount'],
+                            'unit_tax' => $v['tax_value'] 
+        );
       }
     }
     $merchant_loan_id = md5(time() . $processor_data['processor_params']['getfinancing_merchant_id'] .
@@ -43,7 +51,8 @@ else{
 
       $gf_data = array(
           'amount'           => round($order_info['total'], 2),
-          'product_info'     => implode(",",$products),
+          //'product_info'     => implode(",",$products),
+          'cart_items'       => $cart_items,
           'first_name'       => $order_info['b_firstname'],
           'last_name'        => $order_info['b_lastname'],
           'shipping_address' => array(
