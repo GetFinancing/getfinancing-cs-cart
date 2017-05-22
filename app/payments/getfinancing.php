@@ -67,6 +67,7 @@ else{
               'state'   => $order_info['b_state'],
               'zipcode' => $order_info['b_zipcode']
           ),
+          'shipping_amount'  => $order_info['shipping_cost'],
           'version'          => '1.9',
           'email'            => $order_info['email'],
           'phone'            => $order_info['b_phone'],
